@@ -1,0 +1,30 @@
+.order-list li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  border-bottom: solid 1px #eee;
+  padding: 10px 0;
+}
+.order-list h2 {
+  margin: 0;
+}
+.order-list span {
+  color: brown;
+  font-weight: bolder;
+}
+
+.order-list p {
+  font-size: 14px;
+}
+.order-list .right-column {
+  flex-direction: row;
+}
+
+.order-list .add-btn {
+  text-align: right;
+}
+
+.order-list input {
+  width: 50px;
+}

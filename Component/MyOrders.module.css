@@ -1,0 +1,44 @@
+.myorder-list {
+  width: 300px;
+  padding: 0;
+}
+.myorder-list li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  border-bottom: solid 1px #eee;
+  padding: 10px 0;
+}
+.myorder-list h2 {
+  margin: 0;
+}
+.myorder-list span {
+  color: brown;
+}
+
+.myorder-list label {
+  border: solid 1px #eee;
+  border-radius: 3px;
+  width: 25px;
+  height: 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.myorder-list button {
+  color: brown;
+  border: solid 1px #eee;
+  background-color: white;
+  border-radius: 4px;
+  width: 30px;
+  height: 20px;
+  margin: 5px;
+}
+
+.myorder-list li div:nth-child(2) {
+  align-self: flex-end;
+}
+.myorder-list li div:nth-child(3) {
+  align-self: center;
+}

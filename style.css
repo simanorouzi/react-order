@@ -1,0 +1,98 @@
+h1,
+p {
+  font-family: Lato;
+}
+
+input {
+  border: solid 1px #eee;
+  border-radius: 2px;
+}
+
+button:hover {
+  background-color: brown;
+  cursor: pointer;
+  color: #fff;
+}
+.main-frame {
+  background-color: rgb(48, 47, 47);
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.frame-order {
+  margin: 50px auto;
+  width: 50%;
+}
+
+.myframe-order {
+  margin: 50px auto;
+  width: 100%;
+}
+
+.myframe-order > div {
+  text-align: right;
+}
+
+.header {
+  background-color: brown;
+  height: 50px;
+  display: flex;
+  padding: 0 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header span {
+  color: #fff;
+  font-size: 30px;
+  align-self: center;
+}
+
+.introduce-frame {
+  background-color: rgb(83, 83, 83);
+  box-shadow: 10px 10px 10px rgb(31, 31, 31);
+  width: 50%;
+  margin: 100px auto;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+}
+
+.frame {
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px;
+  color: #000;
+}
+
+.backdrop {
+  background-color: #000;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  opacity: 60%;
+}
+
+.white-button {
+  background-color: white;
+  color: brown;
+  border: solid 1px brown;
+}
+
+.my-orders {
+  z-index: 100;
+  position: fixed;
+  left: 40%;
+  top: 20%;
+}
+
+.empty-list {
+  background-color: rgb(199, 193, 193);
+  color: red;
+  font-weight: bold;
+  border: solid 2px rgb(71, 71, 71);
+  border-radius: 5px;
+  padding: 20px;
+  text-align: left;
+}
