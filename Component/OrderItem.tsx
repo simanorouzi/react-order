@@ -37,7 +37,7 @@ const OrderItem = (props: FoodType) => {
     }
   };
 
-  console.log(isValid);
+  // console.log(isValid);
   return (
     <li>
       <div>

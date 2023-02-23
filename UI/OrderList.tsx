@@ -2,28 +2,41 @@ import * as React from 'react';
 import FoodFinder from '../Component/FoodFinder';
 import Frame from '../Component/Frame';
 import OrderItem from '../Component/OrderItem';
-import { FoodType } from '../Component/Types';
+import { FoodType, method, UseHttpType } from '../Component/Types';
+import UseHttpHook from '../Hook/useHttpHook';
 import Styles from '../UI/OrderList.module.css';
 
-const values = [
-  { id: 1, title: 'Kebab', price: 30, description: 'finest food' },
-  { id: 2, title: 'Suchi', price: 30, description: 'finest food' },
-  { id: 3, title: 'Kitchen', price: 30, description: 'finest food' },
-  { id: 4, title: 'Doner', price: 30, description: 'finest food' },
-  { id: 5, title: 'Pizza', price: 30, description: 'finest food' },
-  { id: 6, title: 'Burgur', price: 30, description: 'finest food' },
-  { id: 7, title: 'Bif Sandwich', price: 30, description: 'finest food' },
-];
+// const values = [
+//   { id: 1, title: 'Kebab', price: 30, description: 'finest food' },
+//   { id: 2, title: 'Suchi', price: 30, description: 'finest food' },
+//   { id: 3, title: 'Kitchen', price: 30, description: 'finest food' },
+//   { id: 4, title: 'Doner', price: 30, description: 'finest food' },
+//   { id: 5, title: 'Pizza', price: 30, description: 'finest food' },
+//   { id: 6, title: 'Burgur', price: 30, description: 'finest food' },
+//   { id: 7, title: 'Bif Sandwich', price: 30, description: 'finest food' },
+// ];
 
 const OrderList = () => {
   const [foodList, setFoodList] = React.useState<FoodType[]>([]);
   const [orgList, setOrgList] = React.useState<FoodType[]>([]);
   const [searchTerm, setSearchTerm] = React.useState('');
 
+  const applyFunction = (data) => {
+    setOrgList(data);
+    setFoodList(data);
+  };
+  const fetchParams: UseHttpType = {
+    url: 'https://foodorder-35902-default-rtdb.europe-west1.firebasedatabase.app/Foods.json',
+    request: { methodType: method.Get },
+    applyFunction: applyFunction,
+  };
+  const { error, isLoading, doFetch } = UseHttpHook();
+
   React.useEffect(() => {
-    setOrgList(values);
-    setFoodList([...values]);
+    doFetch(fetchParams);
   }, []);
+
+  console.log(1);
 
   React.useEffect(() => {
     setFoodList(

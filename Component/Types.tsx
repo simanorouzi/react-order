@@ -49,3 +49,21 @@ export type InputType = {
 export type FoodFinderType = {
   onFilter: (keyword) => void;
 };
+export type UseHttpType = {
+  url: string;
+  request: HttpRequestType;
+  applyFunction: (data) => void;
+};
+
+export type HttpRequestType = {
+  methodType: method;
+  body?: string;
+  headers?: {
+    [key: string]: string;
+  };
+};
+
+export enum method {
+  Get = 0,
+  Post = 1,
+}
