@@ -22,8 +22,9 @@ const OrderList = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const applyFunction = (data) => {
-    setOrgList(data);
-    setFoodList(data);
+    const foods = Object.values(data);
+    setOrgList(foods);
+    setFoodList(foods);
   };
   const fetchParams: UseHttpType = {
     url: 'https://foodorder-35902-default-rtdb.europe-west1.firebasedatabase.app/Foods.json',
@@ -36,8 +37,6 @@ const OrderList = () => {
     doFetch(fetchParams);
   }, []);
 
-  console.log(1);
-
   React.useEffect(() => {
     setFoodList(
       orgList.filter((food) =>
@@ -48,6 +47,7 @@ const OrderList = () => {
   const FilterHandler = (keyword: string) => {
     setSearchTerm(keyword);
   };
+  console.log(foodList);
   return (
     <Frame style="frame-order">
       <FoodFinder onFilter={FilterHandler} />
@@ -55,8 +55,7 @@ const OrderList = () => {
         {foodList &&
           foodList.map((food) => (
             <OrderItem
-              key={food.id}
-              id={food.id}
+              key={food.key}
               title={food.title}
               description={food.description}
               price={food.price}

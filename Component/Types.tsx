@@ -13,7 +13,7 @@ export type ButtonType = {
 };
 
 export type FoodType = {
-  id: number;
+  key: string;
   title: string;
   description: string;
   price: number;
@@ -23,7 +23,7 @@ export type OrderType = {
   title: string;
   price: number;
   count: number;
-  foodID: number;
+  foodID: string;
   onChangePrice?: (item: number) => void;
 };
 
