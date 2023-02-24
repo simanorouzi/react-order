@@ -13,7 +13,7 @@ export type ButtonType = {
 };
 
 export type FoodType = {
-  key: string;
+  id: string;
   title: string;
   description: string;
   price: number;

@@ -22,6 +22,7 @@ button:hover {
 .frame-order {
   margin: 50px auto;
   width: 50%;
+  position: relative;
 }
 
 .myframe-order {
@@ -95,4 +96,12 @@ button:hover {
   border-radius: 5px;
   padding: 20px;
   text-align: left;
+}
+.loading {
+  background-color: #eee;
+  opacity: 90%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
 }

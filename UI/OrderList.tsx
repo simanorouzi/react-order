@@ -6,23 +6,20 @@ import { FoodType, method, UseHttpType } from '../Component/Types';
 import UseHttpHook from '../Hook/useHttpHook';
 import Styles from '../UI/OrderList.module.css';
 
-// const values = [
-//   { id: 1, title: 'Kebab', price: 30, description: 'finest food' },
-//   { id: 2, title: 'Suchi', price: 30, description: 'finest food' },
-//   { id: 3, title: 'Kitchen', price: 30, description: 'finest food' },
-//   { id: 4, title: 'Doner', price: 30, description: 'finest food' },
-//   { id: 5, title: 'Pizza', price: 30, description: 'finest food' },
-//   { id: 6, title: 'Burgur', price: 30, description: 'finest food' },
-//   { id: 7, title: 'Bif Sandwich', price: 30, description: 'finest food' },
-// ];
-
 const OrderList = () => {
   const [foodList, setFoodList] = React.useState<FoodType[]>([]);
   const [orgList, setOrgList] = React.useState<FoodType[]>([]);
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const applyFunction = (data) => {
-    const foods = Object.values(data);
+    const foods = Object.entries(data).map(([key, value]) => {
+      return {
+        id: key,
+        description: value.description,
+        price: value.price,
+        title: value.title,
+      };
+    });
     setOrgList(foods);
     setFoodList(foods);
   };
@@ -32,9 +29,10 @@ const OrderList = () => {
     applyFunction: applyFunction,
   };
   const { error, isLoading, doFetch } = UseHttpHook();
-
   React.useEffect(() => {
-    doFetch(fetchParams);
+    setTimeout(() => {
+      doFetch(fetchParams);
+    }, 2000);
   }, []);
 
   React.useEffect(() => {
@@ -47,15 +45,16 @@ const OrderList = () => {
   const FilterHandler = (keyword: string) => {
     setSearchTerm(keyword);
   };
-  console.log(foodList);
   return (
     <Frame style="frame-order">
       <FoodFinder onFilter={FilterHandler} />
+      {isLoading && <div className="loading">Data Is Loading</div>}
+      {error && <div className="loading">{error}</div>}
       <ul className={Styles['order-list']}>
         {foodList &&
           foodList.map((food) => (
             <OrderItem
-              key={food.key}
+              key={food.id}
               title={food.title}
               description={food.description}
               price={food.price}

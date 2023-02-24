@@ -6,14 +6,14 @@ import Input from '../UI/Input';
 
 const OrderItem = (props: FoodType) => {
   let ctxOrder = React.useContext(OrdersContext);
-  const orderItem = ctxOrder.Orders.find((item) => item.foodID == props.key);
+  const orderItem = ctxOrder.Orders.find((item) => item.foodID == props.id);
   const count = orderItem?.count ?? 0;
   const [isValid, setIsValid] = React.useState(true);
   const inputRef = React.useRef();
 
   const AddToOrderHandler = () => {
     ctxOrder.AddOrder({
-      foodID: props.key,
+      foodID: props.id,
       title: props.title,
       price: props.price,
       count: count + 1,
@@ -29,7 +29,7 @@ const OrderItem = (props: FoodType) => {
     }
     if (event.target.value > 0) {
       ctxOrder.AddOrder({
-        foodID: props.key,
+        foodID: props.id,
         title: props.title,
         price: props.price,
         count: +event.target.value,

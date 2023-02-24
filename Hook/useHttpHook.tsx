@@ -9,7 +9,7 @@ const UseHttpHook = () => {
 
   const doFetch = async (props: UseHttpType) => {
     try {
-      // setIsLoading(true);
+      setIsLoading(true);
 
       if (props.request.methodType == method.Get) {
         response = await fetch(props.url);
