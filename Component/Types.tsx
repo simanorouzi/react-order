@@ -66,7 +66,7 @@ export type HttpRequestType = {
 
 export type inputValidateType = {
   value: string;
-  isValid: boolean;
+  isTouched: boolean;
 };
 
 export type actionType = {

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { actionType, inputValidateType } from '../Component/Types';
 
-const initialValue: inputValidateType = { value: '', isValid: false };
+const initialValue: inputValidateType = { value: '', isTouched: false };
 const reduceInputValue = (state: inputValidateType, action: actionType) => {
   switch (action.type) {
     case 'inputValue':
-      return { value: action.value, isValid: state.isValid };
+      return { value: action.value, isValid: state.isTouched };
     case 'blur':
       return { value: state.value, isValid: action.value };
     default:
@@ -20,6 +20,7 @@ const useValidate = (applyTypeValidation) => {
   );
   const inputIsValid = applyTypeValidation(inputValue);
   const formISValid = inputIsValid;
+  const hasError = !inputIsValid && inputValue;
 
   const inputOnChangeHandler = (event) => {
     dispatchInputValue({ type: 'inputValue', value: event.target.value });
