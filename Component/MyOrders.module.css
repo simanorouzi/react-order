@@ -45,3 +45,14 @@
 .address-box {
   text-align: left;
 }
+.form-address {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
+  justify-items: flex-start;
+  align-items: self-start;
+  border: solid 1px #eee;
+  border-radius: 10px;
+  padding: 10px;
+}

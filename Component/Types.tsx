@@ -10,6 +10,7 @@ export type ButtonType = {
   children: React.ReactNode;
   style: string;
   type?: 'submit' | 'reset' | 'button' | undefined;
+  disabled?: boolean;
 };
 
 export type FoodType = {
@@ -41,6 +42,7 @@ export type InputType = {
   name: string;
   type: string;
   Style?: string;
+  className?: string;
   value: string;
   initialValue?: string;
   onChange?: (event) => void;
@@ -70,7 +72,7 @@ export type inputValidateType = {
 };
 
 export type actionType = {
-  value: any;
+  value?: any;
   type: string;
 };
 
