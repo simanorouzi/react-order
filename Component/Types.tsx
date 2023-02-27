@@ -42,8 +42,9 @@ export type InputType = {
   type: string;
   Style?: string;
   value: string;
-  initialValue: string;
-  onChange: (event) => void;
+  initialValue?: string;
+  onChange?: (event) => void;
+  onBlur?: (event) => void;
 };
 
 export type FoodFinderType = {
@@ -61,6 +62,16 @@ export type HttpRequestType = {
   headers?: {
     [key: string]: string;
   };
+};
+
+export type inputValidateType = {
+  value: string;
+  isValid: boolean;
+};
+
+export type actionType = {
+  value: any;
+  type: string;
 };
 
 export enum method {

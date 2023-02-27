@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ReactDom from 'react-dom';
+import Checkout from '../Component/Checkout';
 import Frame from '../Component/Frame';
 import MyOrderItem from '../Component/MyOrderItem';
 import { ModalType } from '../Component/Types';
@@ -37,6 +38,9 @@ const OverLay = (props: ModalType) => {
             </ul>
             <div>${initialPrice}</div>
             <div>
+              <div className={Styles['address-box']}>
+                <Checkout />
+              </div>
               <Button style="white-button" onClick={props.onConfirm}>
                 Close
               </Button>

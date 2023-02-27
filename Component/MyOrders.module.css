@@ -42,3 +42,6 @@
 .myorder-list li div:nth-child(3) {
   align-self: center;
 }
+.address-box {
+  text-align: left;
+}
