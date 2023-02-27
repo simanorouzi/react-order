@@ -55,6 +55,7 @@ const OrderList = () => {
           foodList.map((food) => (
             <OrderItem
               key={food.id}
+              id={food.id}
               title={food.title}
               description={food.description}
               price={food.price}
