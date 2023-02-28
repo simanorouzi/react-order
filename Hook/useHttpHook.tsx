@@ -14,9 +14,9 @@ const UseHttpHook = () => {
       if (props.request.methodType == method.Get) {
         response = await fetch(props.url);
       } else {
-        const body = JSON.stringify(props.request.body);
+        const body = props.request.body;
         response = await fetch(props.url, {
-          method: 'Post',
+          method: 'POST',
           headers: props.request.headers,
           body: body,
         });
