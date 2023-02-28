@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
+  checkOutInputType,
   checkOutType,
   HttpRequestType,
-  inputCheckOutType,
   method,
 } from '../Component/Types';
 import OrdersContext from '../Context/OrdersContext';
@@ -12,9 +12,9 @@ import Button from '../UI/Button';
 import Input from '../UI/Input';
 import Styles from './MyOrders.module.css';
 
-const Checkout = (props) => {
+const Checkout = (props: checkOutInputType) => {
   const ctx = React.useContext(OrdersContext);
-  const { error, isLoading, doFetch } = React.useHttpHook();
+  const { error, isLoading, doFetch } = useHttpHook();
 
   const emptyValidation = (inputValue) => {
     return inputValue !== '';
@@ -86,7 +86,7 @@ const Checkout = (props) => {
     streetBlurHandler();
   };
 
-  const formSubmitHandler = (event) => {
+  const formSubmitHandler = async (event) => {
     event.preventDefault();
     if (!formIsValid) {
       return;
@@ -101,13 +101,21 @@ const Checkout = (props) => {
       },
     };
 
-    const fetchParams: HttpRequestType = {
+    const requestParams: HttpRequestType = {
       methodType: method.Post,
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
     };
 
-    doFetch(fetchParams);
+    props.onLoading();
+
+    await doFetch({
+      url: 'https://foodorder-35902-default-rtdb.europe-west1.firebasedatabase.app/Orders.json',
+      request: requestParams,
+    });
+
+    console.log(isLoading, error);
+    props.onShowNextPage(isLoading, error);
   };
 
   return (

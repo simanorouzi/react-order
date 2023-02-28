@@ -22,7 +22,6 @@ const useValidate = (applyTypeValidation) => {
   );
   const inputIsValid = applyTypeValidation(inputValue.value);
   const hasError = !inputIsValid && inputValue.isTouched;
-  console.log(inputIsValid, applyTypeValidation);
   const inputChangeHandler = (event) => {
     dispatchInputValue({ type: 'inputValue', value: event.target.value });
   };

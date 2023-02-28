@@ -28,6 +28,7 @@ button:hover {
 .myframe-order {
   margin: 50px auto;
   width: 100%;
+  position: relative;
 }
 
 .myframe-order > div {

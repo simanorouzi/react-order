@@ -2,7 +2,7 @@ import * as React from 'react';
 import { method, UseHttpType } from '../Component/Types';
 
 const UseHttpHook = () => {
-  const [isLoading, setIsLoading] = React.useState<boolean>(true);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>('');
   let response;
   let data;

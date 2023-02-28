@@ -55,7 +55,7 @@ export type FoodFinderType = {
 export type UseHttpType = {
   url: string;
   request: HttpRequestType;
-  applyFunction: (data) => void;
+  applyFunction?: (data) => void;
 };
 
 export type HttpRequestType = {
@@ -76,6 +76,11 @@ export type actionType = {
   type: string;
 };
 
+export type checkOutInputType = {
+  onConfirm: () => void;
+  onShowNextPage: (isLoading, error) => void;
+  onLoading: () => void;
+};
 export type checkOutType = {
   orderItems: OrderType[];
   checkOutFields: checkOutFieldType;
