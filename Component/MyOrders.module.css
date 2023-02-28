@@ -49,7 +49,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 250px;
+  height: 200px;
   justify-items: flex-start;
   align-items: self-start;
   border: solid 1px #eee;

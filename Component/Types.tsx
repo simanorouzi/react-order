@@ -76,6 +76,13 @@ export type actionType = {
   type: string;
 };
 
+export type checkOutType={
+  onConfirm:()=>void;
+  orderItems:OrderType[];
+
+}
+
+
 export enum method {
   Get = 0,
   Post = 1,
