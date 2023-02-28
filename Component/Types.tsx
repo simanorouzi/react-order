@@ -76,12 +76,17 @@ export type actionType = {
   type: string;
 };
 
-export type checkOutType={
-  onConfirm:()=>void;
-  orderItems:OrderType[];
+export type checkOutType = {
+  orderItems: OrderType[];
+  checkOutFields: checkOutFieldType;
+};
 
-}
-
+export type checkOutFieldType = {
+  name: string;
+  city: string;
+  street: string;
+  postalCode: string;
+};
 
 export enum method {
   Get = 0,

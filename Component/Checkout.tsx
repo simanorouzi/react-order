@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { checkOutType, inputCheckOutType } from '../Component/Types';
 import useValidate from '../Hook/use-validate';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import Styles from './MyOrders.module.css';
 
-const Checkout = (props: { onConfirm: () => void }) => {
+const Checkout = (props) => {
   const emptyValidation = (inputValue) => {
     return inputValue !== '';
   };
@@ -68,9 +69,15 @@ const Checkout = (props: { onConfirm: () => void }) => {
     postalCodeBlurHandler();
   };
 
+  const inputStreetChangeHandler = (event) => {
+    streetChangeHandler(event);
+  };
+  const inputStreetBlurHandler = () => {
+    streetBlurHandler();
+  };
+
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(formIsValid);
     if (!formIsValid) {
       return;
     }
@@ -123,12 +130,13 @@ const Checkout = (props: { onConfirm: () => void }) => {
           type: 'text',
           name: 'street',
           value: streetValue,
-          onChange: streetChangeHandler,
-          onBlur: streetBlurHandler,
+          onChange: inputStreetChangeHandler,
+          onBlur: inputStreetBlurHandler,
           className: streetHasError ? 'invalid' : '',
         }}
       />
       {streetHasError && <p className="invalid">Street Is Invalid!</p>}
+
       <div>
         <Button style="white-button" onClick={props.onConfirm}>
           Close

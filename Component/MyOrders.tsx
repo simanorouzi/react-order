@@ -38,7 +38,7 @@ const OverLay = (props: ModalType) => {
             </ul>
             <div>${initialPrice}</div>
             <div className={Styles['address-box']}>
-              <Checkout onConfirm={props.onConfirm}/>
+              <Checkout onConfirm={props.onConfirm} />
             </div>
           </div>
         )}
