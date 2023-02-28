@@ -1,11 +1,21 @@
 import * as React from 'react';
-import { checkOutType, inputCheckOutType } from '../Component/Types';
+import {
+  checkOutType,
+  HttpRequestType,
+  inputCheckOutType,
+  method,
+} from '../Component/Types';
+import OrdersContext from '../Context/OrdersContext';
 import useValidate from '../Hook/use-validate';
+import useHttpHook from '../Hook/useHttpHook';
 import Button from '../UI/Button';
 import Input from '../UI/Input';
 import Styles from './MyOrders.module.css';
 
 const Checkout = (props) => {
+  const ctx = React.useContext(OrdersContext);
+  const { error, isLoading, doFetch } = React.useHttpHook();
+
   const emptyValidation = (inputValue) => {
     return inputValue !== '';
   };
@@ -81,6 +91,23 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+    const body: checkOutType = {
+      orderItems: ctx.Orders,
+      checkOutFields: {
+        name: nameValue,
+        city: cityValue,
+        postalCode: postalCodeValue,
+        street: streetValue,
+      },
+    };
+
+    const fetchParams: HttpRequestType = {
+      methodType: method.Post,
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+    };
+
+    doFetch(fetchParams);
   };
 
   return (
