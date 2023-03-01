@@ -16,9 +16,7 @@ const Checkout = (props: checkOutInputType) => {
   const ctx = React.useContext(OrdersContext);
   const { error, isLoading, doFetch } = useHttpHook();
 
-  const emptyValidation = (inputValue) => {
-    return inputValue !== '';
-  };
+  const emptyValidation = (inputValue) => inputValue !== '';
   const {
     inputValue: nameValue,
     inputIsValid: nameIsValid,
